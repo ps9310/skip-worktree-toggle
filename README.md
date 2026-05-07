@@ -20,20 +20,29 @@ Multi-root workspaces are supported; you'll be asked which repo to act on.
 
 ## Install
 
-Requires Node.js (for `npx`) and your editor's CLI (`code`, `cursor`, etc.) on your `PATH`.
+Requires Node.js (for `npx`), Python 3, and your editor's CLI (`code`, `cursor`, etc.) on your `PATH`.
+
+### Recommended: one-shot script
 
 ```bash
-# from the repo root (the folder containing package.json)
+./install.sh           # auto-detects cursor / code / code-insiders
+./install.sh cursor    # or pin a specific editor
+```
+
+The script packages the VSIX, installs it via the editor CLI, and patches the editor's `extensions.json` to ensure the workbench scanner accepts the locally-built extension. (Without that patch some editors — notably Cursor — silently drop VSIX-installed extensions.)
+
+### Manual install
+
+```bash
 npx --yes @vscode/vsce@latest package \
   --out skip-worktree-toggle.vsix \
   --allow-missing-repository --skip-license --no-dependencies
 
-# pick the CLI for your editor
 code   --install-extension "$PWD/skip-worktree-toggle.vsix" --force   # VSCode
 # cursor --install-extension "$PWD/skip-worktree-toggle.vsix" --force # Cursor
 ```
 
-Then fully quit and reopen the editor so the workbench picks up the new extension.
+After installing, fully quit and reopen the editor (`Cmd+Q` on macOS) so the workbench picks up the new extension.
 
 ## Suggested keybindings
 
