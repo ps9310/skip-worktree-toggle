@@ -1,0 +1,36 @@
+{
+  "name": "skip-worktree-toggle",
+  "displayName": "Git Skip-Worktree Toggle",
+  "description": "Quickly toggle git skip-worktree on tracked files via a QuickPick.",
+  "version": "0.0.3",
+  "publisher": "local",
+  "engines": { "vscode": "^1.75.0" },
+  "repository": { "type": "git", "url": "https://github.com/ps9310/skip-worktree-toggle.git" },
+  "license": "MIT",
+  "icon": "icon.png",
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "skipWorktree.toggle",
+        "title": "Git: Toggle skip-worktree (pick files)",
+        "category": "Git Skip-Worktree"
+      },
+      {
+        "command": "skipWorktree.list",
+        "title": "Git: List skip-worktree files",
+        "category": "Git Skip-Worktree"
+      },
+      {
+        "command": "skipWorktree.toggleCurrentFile",
+        "title": "Git: Toggle skip-worktree on current file",
+        "category": "Git Skip-Worktree"
+      },
+      {
+        "command": "skipWorktree.unskip",
+        "title": "Git: Unskip files (pick from currently skipped)",
+        "category": "Git Skip-Worktree"
+      }
+    ]
+  }
+}
